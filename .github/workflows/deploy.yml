@@ -21,9 +21,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build  # Adjust if your build command differs
-
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v20
         with:
