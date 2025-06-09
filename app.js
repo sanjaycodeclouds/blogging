@@ -58,4 +58,13 @@ app.use("/comment", checkForAuthenticationCookie("_token"), commentRoutes)
 // End:: route
 
 
-app.listen(PORT, () => { console.log(`Server started at port:${PORT}`) })
+// app.listen(PORT, () => { console.log(`Server started at port:${PORT}`) })
+
+
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server started at port:${PORT}`);
+  });
+}
+
+module.exports = app;
