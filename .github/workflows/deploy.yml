@@ -3,7 +3,8 @@ name: Deploy to Vercel
 on:
   push:
     branches:
-      - developer   # Change to the branch you want to deploy to production
+      - main
+      - developer
 
 jobs:
   deploy:
@@ -27,6 +28,7 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod'
+          # Deploy to production ONLY if branch is main
+          vercel-args: ${{ github.ref == 'refs/heads/main' && '--prod' || '' }}
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
